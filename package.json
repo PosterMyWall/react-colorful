@@ -137,7 +137,7 @@
     "README.md",
     "package.json"
   ],
-  "repository": "omgovich/react-colorful",
+  "repository": "PosterMyWall/react-colorful",
   "keywords": [
     "react",
     "color picker",
@@ -158,7 +158,7 @@
   "author": "Vlad Shilov <omgovich@ya.ru>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/omgovich/react-colorful/issues"
+    "url": "https://github.com/PosterMyWall/react-colorful"
   },
   "homepage": "https://omgovich.github.io/react-colorful",
   "peerDependencies": {
