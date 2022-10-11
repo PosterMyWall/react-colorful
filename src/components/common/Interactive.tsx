@@ -48,12 +48,6 @@ const preventDefaultMove = (event: MouseEvent | TouchEvent): void => {
   !isTouch(event) && event.preventDefault();
 };
 
-// Prevent mobile browsers from handling mouse events (conflicting with touch ones).
-// If we detected a touch interaction before, we prefer reacting to touch events only.
-const isInvalid = (event: MouseEvent | TouchEvent, hasTouch: boolean): boolean => {
-  return hasTouch && !isTouch(event);
-};
-
 interface Props {
   onMove: (interaction: Interaction) => void;
   onKey: (offset: Interaction) => void;
@@ -75,12 +69,12 @@ const InteractiveBase = ({ onMove, onKey, ...rest }: Props) => {
       // Prevent text selection
       preventDefaultMove(nativeEvent);
 
-      if (isInvalid(nativeEvent, hasTouch.current) || !el) return;
-
       if (isTouch(nativeEvent)) {
         hasTouch.current = true;
         const changedTouches = nativeEvent.changedTouches || [];
         if (changedTouches.length) touchId.current = changedTouches[0].identifier;
+      } else {
+        hasTouch.current = false;
       }
 
       el.focus();
